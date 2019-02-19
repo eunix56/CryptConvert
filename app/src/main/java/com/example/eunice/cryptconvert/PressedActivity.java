@@ -1,5 +1,6 @@
 package com.example.eunice.cryptconvert;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import com.example.eunice.cryptconvert.MODEL.BTC;
 import com.example.eunice.cryptconvert.MODEL.CryptoClass;
 import com.example.eunice.cryptconvert.MODEL.ETH;
+import com.example.eunice.cryptconvert.REST.CryptoViewModel;
 
 import org.w3c.dom.Text;
 
@@ -28,6 +30,7 @@ public class PressedActivity extends AppCompatActivity {
     private DecimalFormat df;
     private TextView countryName;
     private TextView btcCurrency;
+    private CryptoViewModel cryptoViewModel;
     private TextView ethCurrency;
     private View view;
     private Button currencyButton;
@@ -52,6 +55,8 @@ public class PressedActivity extends AppCompatActivity {
         ethLinear = (LinearLayout)findViewById(R.id.ethLinear);
         view = findViewById(R.id.view);
 
+        cryptoViewModel = ViewModelProviders.of(this).get(CryptoViewModel.class);
+
         df = new DecimalFormat("0.000");
         Intent i = getIntent();
         if (i.hasExtra(EXTRA_ETH)) {
@@ -75,8 +80,6 @@ public class PressedActivity extends AppCompatActivity {
                         currencyButton.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                btc.addArray();
-                                eth.addArray();
                                 double btcValue = Double.parseDouble(countryCurrency.getText().toString())/btc.setArray(position);
                                 double ethValue = Double.parseDouble(countryCurrency.getText().toString())/eth.setArray(position);
 

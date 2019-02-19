@@ -3,6 +3,7 @@ package com.example.eunice.cryptconvert;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,6 +50,7 @@ import java.util.ArrayList;
     public interface OnItemClickListener{
          void onItemClick(View v, int position);
     }
+
 
     public CryptoAdapter(Context context, BTC cryptoClass, ETH crypto, Country mCountry, OnItemClickListener onItemClickListener){
         inflater = LayoutInflater.from(context);
