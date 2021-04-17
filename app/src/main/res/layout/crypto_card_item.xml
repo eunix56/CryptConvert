@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="24dp"
+    android:id="@+id/cv_crypto_card"
+    app:cardBackgroundColor="@color/colorCardBackground"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    app:cardCornerRadius="12dp"
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_btc_icon"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/bitcoin"/>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_btc_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BTC"
+                android:padding="2dp"
+                android:textColor="@color/colorCardCryptoText"
+                android:fontFamily="@font/nunito_bold"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_btc_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textColor="@color/colorCardValue"
+                android:text="4,000"
+                android:fontFamily="@font/nunito_semibold"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_country_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="36sp"
+        android:text="USD"
+        android:padding="4dp"
+        android:textColor="@color/colorCardCurrencyText"
+        android:fontFamily="@font/nunito_extrabold"
+        android:layout_gravity="center_horizontal|center_vertical"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/eth"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_eth_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ETH"
+                android:textColor="@color/colorCardCryptoText"
+                android:padding="2dp"
+                android:fontFamily="@font/nunito_bold"
+                android:textSize="20sp"
+                />
+
+
+            <TextView
+                android:id="@+id/tv_eth_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2,500"
+                android:layout_marginBottom="8dp"
+                android:textColor="@color/colorCardValue"
+                android:textSize="24sp"
+                android:fontFamily="@font/nunito_semibold"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
+
+</android.support.v7.widget.CardView>

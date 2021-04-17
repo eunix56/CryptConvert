@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="5"
+    android:orientation="vertical"
+    android:background="@color/colorCardBackground"
+    tools:context=".ui.CryptoCardFragment">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3.5"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_back_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_keyboard_back"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+        </RelativeLayout>
+
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/sp_currency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            style="@style/SpinnerTheme"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="108dp"
+            android:spinnerMode="dropdown" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/et_currency_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:imeOptions="actionDone"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:hint="Currency"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/nunito_semibold"
+                android:textSize="40sp"
+                android:textColor="@color/colorCardValue"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ll_one_currency"
+                android:orientation="horizontal"
+                android:layout_marginStart="16dp"
+                >
+                <TextView
+                    android:id="@+id/tv_one_currency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="1 USD"
+                    android:layout_marginTop="4dp"
+                    android:textSize="17sp"
+                    android:textColor="@color/colorCardValue"
+                    android:fontFamily="@font/nunito_bold"
+                    />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="4dp"
+                    android:src="@drawable/ic_compare_24dp"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_one_btc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="1 BTC"
+                    android:layout_marginTop="4dp"
+                    android:textSize="17sp"
+                    android:textColor="@color/colorCardValue"
+                    android:layout_marginStart="4dp"
+                    android:fontFamily="@font/nunito_bold"
+                    />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="4dp"
+                    android:src="@drawable/ic_compare_24dp"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_one_eth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="1 ETH"
+                    android:layout_marginTop="4dp"
+                    android:textSize="17sp"
+                    android:textColor="@color/colorCardValue"
+                    android:layout_marginStart="4dp"
+                    android:fontFamily="@font/nunito_bold"
+                    />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/bt_convert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/bg_convert_button"
+            android:fontFamily="@font/nunito_extrabold"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:text="@string/convert"
+            android:textAllCaps="false"
+            android:layout_marginBottom="24dp"
+            android:layout_gravity="bottom"
+            android:textColor="@color/colorCardValue"
+            android:textSize="17sp" />
+
+    </FrameLayout>
+
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_crypto_screen"
+        android:id="@+id/fl_low_screen"
+        android:layout_weight="1.5">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_compare"
+                    />
+
+                <TextView
+                    android:id="@+id/first_convert_currency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="0.10"
+                    android:textSize="40sp"
+                    android:textColor="@color/colorCardValue"
+                    android:fontFamily="@font/nunito_semibold"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_first_currency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="BTC"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:textSize="22sp"
+                    android:textColor="@color/colorCardValue"
+                    android:fontFamily="@font/nunito_bold"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="24dp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_compare"
+                    />
+
+                <TextView
+                    android:id="@+id/second_convert_currency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="0.10"
+                    android:textSize="40sp"
+                    android:textColor="@color/colorCardValue"
+                    android:fontFamily="@font/nunito_semibold"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_second_currency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="ETH"
+                    android:textSize="22sp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:textColor="@color/colorCardValue"
+                    android:fontFamily="@font/nunito_bold"
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</LinearLayout>

@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#C4E0EB</color>
-    <color name="colorPrimaryDark">#a4a5a6</color>
-    <color name="colorAccent">#3793c8</color>
-    <color name="button">#fafafa</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorBackground">#F1EFED</color>
+    <color name="colorCardCurrencyText">#EEEEEE</color>
+    <color name="colorCardCryptoText">#ECECEC</color>
+    <color name="colorCardValue">#011B2B</color>
+    <color name="colorCardBackground">#208794</color>
+    <color name="colorCurrencyBackground">#6DAABD</color>
+
 </resources>
