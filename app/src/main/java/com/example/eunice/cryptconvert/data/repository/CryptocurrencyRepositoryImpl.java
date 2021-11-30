@@ -1,7 +1,7 @@
 package com.example.eunice.cryptconvert.data.repository;
 
 import android.app.Application;
-import android.arch.lifecycle.LiveData;
+import androidx.lifecycle.LiveData;
 
 import com.example.eunice.cryptconvert.data.CryptoConvertNetworkSource;
 import com.example.eunice.cryptconvert.data.utils.CountryUtils;

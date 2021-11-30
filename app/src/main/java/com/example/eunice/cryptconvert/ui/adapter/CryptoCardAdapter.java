@@ -2,10 +2,9 @@ package com.example.eunice.cryptconvert.ui.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.View;
@@ -14,7 +13,6 @@ import android.widget.TextView;
 import com.example.eunice.cryptconvert.R;
 import com.example.eunice.cryptconvert.data.db.Country;
 import com.example.eunice.cryptconvert.internal.utils.StringUtils;
-import com.example.eunice.cryptconvert.ui.CryptoCardFragment;
 
 import java.util.List;
 

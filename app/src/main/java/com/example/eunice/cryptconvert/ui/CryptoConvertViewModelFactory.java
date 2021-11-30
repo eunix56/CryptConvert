@@ -1,13 +1,12 @@
 package com.example.eunice.cryptconvert.ui;
 
 import android.app.Application;
-import android.arch.lifecycle.AndroidViewModel;
-import android.arch.lifecycle.ViewModel;
-import android.arch.lifecycle.ViewModelProvider;
-import android.support.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.annotation.NonNull;
 
 import com.example.eunice.cryptconvert.data.repository.CryptocurrencyRepository;
-import com.example.eunice.cryptconvert.ui.CryptoConvertViewModel;
 
 public class CryptoConvertViewModelFactory extends ViewModelProvider.AndroidViewModelFactory {
     private CryptocurrencyRepository mRepository;

@@ -2,7 +2,7 @@ package com.example.eunice.cryptconvert.data.utils;
 
 import android.app.Activity;
 import android.app.Application;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.util.Log;
 
 
