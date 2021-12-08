@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 import com.example.eunice.cryptconvert.R;
 import com.example.eunice.cryptconvert.data.db.Country;
+import com.example.eunice.cryptconvert.databinding.FragmentCryptoCardBinding;
 import com.example.eunice.cryptconvert.internal.utils.AmountTextWatcher;
 import com.example.eunice.cryptconvert.ui.adapter.CurrencySpinnerAdapter;
 
@@ -37,22 +38,10 @@ import static com.example.eunice.cryptconvert.internal.utils.StringUtils.formatV
  * A simple {@link Fragment} subclass.
  */
 public class CryptoCardFragment extends Fragment {
+    private FragmentCryptoCardBinding cryptoCardBinding;
     private Country cryptoCountry;
-    private EditText etCurrencyValue;
-    private AppCompatSpinner spCurrency;
-    private ImageView ivBackHome;
-    private Button btConvert;
-    private TextView firstConvertCurrency;
-    private TextView tvFirstCurrency;
-    private TextView secondConvertCurrency;
-    private TextView tvSecondCurrency;
-    private TextView tvOneCurrency;
-    private TextView tvOneBtc;
-    private TextView tvOneEth;
     private List<String> currencyItems;
     private String selectedItem = "";
-    private LinearLayout llOneCurrency;
-    private FrameLayout flLowScreen;
     private final static String BTC_TEXT = "BTC";
     private final static String ETH_TEXT = "ETH";
 
@@ -74,23 +63,10 @@ public class CryptoCardFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View cryptoView = inflater.inflate(R.layout.fragment_crypto_card, container, false);
 
-        ivBackHome = findView(cryptoView, R.id.iv_back_home);
-        spCurrency = findView(cryptoView, R.id.sp_currency);
-        etCurrencyValue = findView(cryptoView, R.id.et_currency_value);
-        btConvert = findView(cryptoView, R.id.bt_convert);
-        firstConvertCurrency = findView(cryptoView, R.id.first_convert_currency);
-        tvFirstCurrency = findView(cryptoView, R.id.tv_first_currency);
-        secondConvertCurrency = findView(cryptoView, R.id.second_convert_currency);
-        tvSecondCurrency = findView(cryptoView, R.id.tv_second_currency);
-        tvOneCurrency = findView(cryptoView, R.id.tv_one_currency);
-        tvOneBtc = findView(cryptoView, R.id.tv_one_btc);
-        tvOneEth = findView(cryptoView, R.id.tv_one_eth);
-        llOneCurrency = findView(cryptoView, R.id.ll_one_currency);
-        flLowScreen = findView(cryptoView, R.id.fl_low_screen);
+        cryptoCardBinding = FragmentCryptoCardBinding.inflate(inflater, container, false);
 
-        return cryptoView;
+        return cryptoCardBinding.getRoot();
     }
 
     @Override
@@ -106,15 +82,11 @@ public class CryptoCardFragment extends Fragment {
 
     }
 
-    private <T extends View> T findView(View fragmentView, @IdRes int fragmentId) {
-        return fragmentView.findViewById(fragmentId);
-    }
-
     private void bindUI() {
-        ivBackHome.setOnClickListener(v ->requireFragmentManager().popBackStack());
+        cryptoCardBinding.ivBackHome.setOnClickListener(v ->requireFragmentManager().popBackStack());
         setCommasInValue();
         setupSpinner();
-        btConvert.setOnClickListener(v -> {
+        cryptoCardBinding.btConvert.setOnClickListener(v -> {
             onClickConvert();
             InputMethodManager inputManager = (InputMethodManager) v.getContext()
                     .getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -126,9 +98,10 @@ public class CryptoCardFragment extends Fragment {
 
     private void setCommasInValue() {
         setOnClick();
-        etCurrencyValue.addTextChangedListener(new AmountTextWatcher(etCurrencyValue));
+        cryptoCardBinding.etCurrencyValue.addTextChangedListener(new AmountTextWatcher(
+                cryptoCardBinding.etCurrencyValue));
 
-        etCurrencyValue.setOnEditorActionListener((v, actionId, event) -> {
+        cryptoCardBinding.etCurrencyValue.setOnEditorActionListener((v, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_DONE){
                 onClickConvert();
                 InputMethodManager inputManager = (InputMethodManager) v.getContext()
@@ -147,17 +120,17 @@ public class CryptoCardFragment extends Fragment {
             return;
 
         if (selectedItem.equals(cryptoCountry.getName())) {
-            tvOneCurrency.setText(String.format("1 %s", cryptoCountry.getName()));
-            tvOneBtc.setText(String.format("%s %s", formatValue(1/btc), BTC_TEXT));
-            tvOneEth.setText(String.format("%s %s", formatValue(1/eth), ETH_TEXT));
+            cryptoCardBinding.tvOneCurrency.setText(String.format("1 %s", cryptoCountry.getName()));
+            cryptoCardBinding.tvOneBtc.setText(String.format("%s %s", formatValue(1/btc), BTC_TEXT));
+            cryptoCardBinding.tvOneEth.setText(String.format("%s %s", formatValue(1/eth), ETH_TEXT));
         }else if (selectedItem.equals(BTC_TEXT)){
-            tvOneCurrency.setText(String.format("1 %s", BTC_TEXT));
-            tvOneBtc.setText(String.format("%s %s", formatValue(btc), cryptoCountry.getName()));
-            tvOneEth.setText(String.format("%s %s", formatValue(btc/eth), ETH_TEXT));
+            cryptoCardBinding.tvOneCurrency.setText(String.format("1 %s", BTC_TEXT));
+            cryptoCardBinding.tvOneBtc.setText(String.format("%s %s", formatValue(btc), cryptoCountry.getName()));
+            cryptoCardBinding.tvOneEth.setText(String.format("%s %s", formatValue(btc/eth), ETH_TEXT));
         }else if (selectedItem.equals(ETH_TEXT)){
-            tvOneCurrency.setText(String.format("1 %s", ETH_TEXT));
-            tvOneBtc.setText(String.format("%s %s", formatValue(eth), cryptoCountry.getName()));
-            tvOneEth.setText(String.format("%s %s", formatValue(eth/btc), BTC_TEXT));
+            cryptoCardBinding.tvOneCurrency.setText(String.format("1 %s", ETH_TEXT));
+            cryptoCardBinding.tvOneBtc.setText(String.format("%s %s", formatValue(eth), cryptoCountry.getName()));
+            cryptoCardBinding.tvOneEth.setText(String.format("%s %s", formatValue(eth/btc), BTC_TEXT));
         }
     }
 
@@ -171,11 +144,11 @@ public class CryptoCardFragment extends Fragment {
     }
 
     private void setOnClick() {
-        llOneCurrency.setOnClickListener(v -> {
+        cryptoCardBinding.llOneCurrency.setOnClickListener(v -> {
 
         });
 
-        flLowScreen.setOnClickListener(v -> {
+        cryptoCardBinding.flLowScreen.setOnClickListener(v -> {
 
         });
     }
@@ -184,13 +157,13 @@ public class CryptoCardFragment extends Fragment {
         CurrencySpinnerAdapter adapter = new CurrencySpinnerAdapter(this.getContext(), getCurrencyItems(),
                 R.layout.currency_name);
 
-        spCurrency.setAdapter(adapter);
-        spCurrency.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        cryptoCardBinding.spCurrency.setAdapter(adapter);
+        cryptoCardBinding.spCurrency.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 selectedItem = adapter.getItem(position).toString();
                 setupCurrencyTextViews(cryptoCountry.getBtcValue(), cryptoCountry.getEthValue());
-                etCurrencyValue.setText("");
+                cryptoCardBinding.etCurrencyValue.setText("");
             }
 
             @Override
@@ -201,29 +174,30 @@ public class CryptoCardFragment extends Fragment {
     }
 
     private void onClickConvert() {
-        if (etCurrencyValue == null || etCurrencyValue.getText() == null)
+        if (cryptoCardBinding.etCurrencyValue.getText() == null
+        || cryptoCardBinding.etCurrencyValue.getText().toString().isEmpty())
             return;
 
         if (selectedItem == null)
             return;
 
         double currencyValue = Double.parseDouble(AmountTextWatcher
-                .trimCommas(etCurrencyValue.getText().toString()));
+                .trimCommas(cryptoCardBinding.etCurrencyValue.getText().toString()));
         double btcValue = cryptoCountry.getBtcValue();
         double ethValue = cryptoCountry.getEthValue();
 
         if (selectedItem.equals(cryptoCountry.getName())) {
             calculateCountryCurrencyValue(btcValue, ethValue, currencyValue);
-            tvFirstCurrency.setText(BTC_TEXT);
-            tvSecondCurrency.setText(ETH_TEXT);
+            cryptoCardBinding.tvFirstCurrency.setText(BTC_TEXT);
+            cryptoCardBinding.tvSecondCurrency.setText(ETH_TEXT);
         }else if (selectedItem.equals(BTC_TEXT)){
             calculateBTCCurrencyValue(btcValue, ethValue, currencyValue);
-            tvFirstCurrency.setText(cryptoCountry.getName());
-            tvSecondCurrency.setText(ETH_TEXT);
+            cryptoCardBinding.tvFirstCurrency.setText(cryptoCountry.getName());
+            cryptoCardBinding.tvSecondCurrency.setText(ETH_TEXT);
         }else if (selectedItem.equals(ETH_TEXT)){
             calculateETHCurrencyValue(btcValue, ethValue, currencyValue);
-            tvFirstCurrency.setText(cryptoCountry.getName());
-            tvSecondCurrency.setText(BTC_TEXT);
+            cryptoCardBinding.tvFirstCurrency.setText(cryptoCountry.getName());
+            cryptoCardBinding.tvSecondCurrency.setText(BTC_TEXT);
         }
 
     }
@@ -231,27 +205,27 @@ public class CryptoCardFragment extends Fragment {
     private void calculateCountryCurrencyValue(double btcValue,
                                                double ethValue, double currencyValue) {
         Double btcCurrencyValue = currencyValue * (1/btcValue);
-        firstConvertCurrency.setText(formatValue(btcCurrencyValue));
+        cryptoCardBinding.firstConvertCurrency.setText(formatValue(btcCurrencyValue));
         //1.0725263787862862E-4
 
         Double ethCurrencyValue = currencyValue * (1/ethValue);
-        secondConvertCurrency.setText(formatValue(ethCurrencyValue));
+        cryptoCardBinding.secondConvertCurrency.setText(formatValue(ethCurrencyValue));
     }
 
     private void calculateBTCCurrencyValue(double btcValue, double ethValue, double currencyValue) {
         Double countryCurrencyValue = currencyValue * btcValue;
-        firstConvertCurrency.setText(formatValue(countryCurrencyValue));
+        cryptoCardBinding.firstConvertCurrency.setText(formatValue(countryCurrencyValue));
 
         Double ethCurrencyValue = currencyValue * (btcValue/ethValue);
-        secondConvertCurrency.setText(formatValue(ethCurrencyValue));
+        cryptoCardBinding.secondConvertCurrency.setText(formatValue(ethCurrencyValue));
     }
 
     private void calculateETHCurrencyValue(double btcValue, double ethValue, double currencyValue) {
         Double countryCurrencyValue =  currencyValue * ethValue;
-        firstConvertCurrency.setText(formatValue(countryCurrencyValue));
+        cryptoCardBinding.firstConvertCurrency.setText(formatValue(countryCurrencyValue));
 
         Double btcCurrencyValue = currencyValue * (ethValue/btcValue);
-        secondConvertCurrency.setText(formatValue(btcCurrencyValue));
+        cryptoCardBinding.secondConvertCurrency.setText(formatValue(btcCurrencyValue));
     }
 
 }

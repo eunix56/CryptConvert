@@ -98,6 +98,15 @@ public class CryptoConvertActivity extends AppCompatActivity implements CryptoCo
         fm.beginTransaction().add(R.id.container, fragment, tag).addToBackStack(tag).commit();
     }
 
+    private void startFragmentAnimation(Fragment fragment, String tag) {
+        FragmentManager fm = getSupportFragmentManager();
+        fm.beginTransaction()
+        .setCustomAnimations(R.anim.slide_up_in, R.anim.slide_up_out)
+                .add(R.id.container, fragment)
+                .addToBackStack(tag)
+                .commit();
+    }
+
     private void refresh() {
         if (countries == null || countries.size() == 0) {
             viewModel.getCryptoData();
@@ -106,7 +115,7 @@ public class CryptoConvertActivity extends AppCompatActivity implements CryptoCo
 
     @Override
     public void onStartFragment(Country country) {
-        startFragmentToBackStack(CryptoCardFragment.newInstance(country), "crypto_card_fragment");
+        startFragmentAnimation(CryptoCardFragment.newInstance(country), CryptoCardFragment.class.getSimpleName());
     }
 
     @Override
