@@ -113,7 +113,19 @@ public class CryptoConvertFragment extends Fragment
 
     }
 
+    private void initClickedCountries(List<Country> countries) {
+        for (Country country: countries) {
+            if (country.getName().equals("USD")
+                    || country.getName().equals("EUR")
+                    || country.getName().equals("NGN")) {
+                country.setChecked(true);
+            }
+        }
+    }
+
     private void setClickedCountriesData(List<Country> countries) {
+        initClickedCountries(countries);
+
         for (Country country: countries){
             if (country.isChecked()) clickedCountries.add(country);
         }
@@ -181,7 +193,7 @@ public class CryptoConvertFragment extends Fragment
             clickedCountries.remove(country);
         }
 
-        cryptoCardAdapter.notifyDataSetChanged();
+        cryptoCardAdapter.notifyItemChanged(c);
         currencyItemAdapter.notifyDataSetChanged();
 
     }

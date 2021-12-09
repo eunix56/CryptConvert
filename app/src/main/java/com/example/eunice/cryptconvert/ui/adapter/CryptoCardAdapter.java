@@ -51,7 +51,7 @@ public class CryptoCardAdapter extends RecyclerView.Adapter<CryptoCardAdapter.Ca
         notifyDataSetChanged();
     }
 
-    class CardViewHolder extends RecyclerView.ViewHolder{
+    static class CardViewHolder extends RecyclerView.ViewHolder{
         private TextView tvCountryCode;
         private TextView tvBTCValue;
         private TextView tvETHValue;

@@ -17,6 +17,8 @@ import com.example.eunice.cryptconvert.data.repository.CryptocurrencyRepositoryI
 import com.example.eunice.cryptconvert.data.utils.CountryUtils;
 import com.example.eunice.cryptconvert.data.utils.RealmUtils;
 import com.example.eunice.cryptconvert.internal.utils.Prefs;
+import com.example.eunice.cryptconvert.ui.viewmodel.CryptoConvertViewModel;
+import com.example.eunice.cryptconvert.ui.viewmodel.CryptoConvertViewModelFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,7 +87,7 @@ public class CryptoConvertActivity extends AppCompatActivity implements CryptoCo
     private void bindUI() {
         countries = Prefs.getInstance().getCountries();
         startFragment(CryptoConvertFragment.newInstance(this, countries, realmUtils),
-                "crypto_convert_fragment");
+                CryptoConvertFragment.class.getSimpleName());
     }
 
     private void startFragment(Fragment fragment, String tag) {
