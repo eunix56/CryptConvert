@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout/currency_item.xml" value="0.2546875" />
         <entry key="app/src/main/res/layout/fragment_crypto_card.xml" value="0.2546875" />
       </map>
     </option>

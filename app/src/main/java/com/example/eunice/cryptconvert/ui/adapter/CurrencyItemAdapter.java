@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.eunice.cryptconvert.R;
 import com.example.eunice.cryptconvert.data.db.Country;
 import com.example.eunice.cryptconvert.data.utils.RealmUtils;
+import com.example.eunice.cryptconvert.internal.utils.Constants;
 
 import java.util.List;
 
@@ -43,12 +44,37 @@ public class CurrencyItemAdapter extends RecyclerView.Adapter<CurrencyItemAdapte
 
     public void setData(List<Country> countries) {
         this.mCountryList = countries;
-        notifyDataSetChanged();
+        notifyItemRangeInserted(Constants.ITEM_POSITION_START, countries.size());
     }
 
     @Override
     public int getItemCount() {
         return mCountryList.size();
+    }
+
+    public void addItem(Country country) {
+        if (country == null) return;
+
+        if (mCountryList.contains(country)) return;
+
+
+    }
+
+    public void removeItem(Country country) {
+        if (country == null) return;
+
+        if (!mCountryList.contains(country)) return;
+
+        mCountryList.remove(country);
+        notifyItemHasMoved(country);
+    }
+
+    public void notifyItemHasMoved(Country country) {
+        if (country == null) return;
+
+        if (!mCountryList.contains(country)) return;
+
+        notifyItemChanged(mCountryList.indexOf(country));
     }
 
     class CurrencyItemHolder extends RecyclerView.ViewHolder {

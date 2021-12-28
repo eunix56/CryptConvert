@@ -121,11 +121,6 @@ public class CryptoConvertActivity extends AppCompatActivity implements CryptoCo
     }
 
     @Override
-    public void onRefreshCountries() {
-        refresh();
-    }
-
-    @Override
     protected void onDestroy() {
         super.onDestroy();
         realmUtils.closeRealm();

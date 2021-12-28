@@ -48,8 +48,7 @@ public class CryptoConvertFragment extends Fragment
     //No internet connection. Connect to the internet and pull to refresh
 
     public CryptoConvertFragment() {
-        countries = new ArrayList<>();
-        clickedCountries = new ArrayList<>();
+
     }
 
     public static CryptoConvertFragment newInstance(StartFragmentListener listener,
@@ -91,6 +90,8 @@ public class CryptoConvertFragment extends Fragment
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        clickedCountries = new ArrayList<>();
 
         if (countries != null)
         bindUI(countries);
@@ -137,8 +138,8 @@ public class CryptoConvertFragment extends Fragment
         cryptoCardAdapter = new CryptoCardAdapter(this.requireContext(), this);
 
         setClickedCountriesData(countries);
-        currencyItemAdapter.setData(countries);
         cryptoCardAdapter.setData(clickedCountries);
+        currencyItemAdapter.setData(countries);
 
         rvCryptoCard.setAdapter(cryptoCardAdapter);
         rvCurrencyItem.setAdapter(currencyItemAdapter);
@@ -187,15 +188,16 @@ public class CryptoConvertFragment extends Fragment
 
     @Override
     public void onItemClicked(Country country, boolean isChecked) {
-        if (!country.isChecked()){
-            clickedCountries.add(country);
-        }else {
-            clickedCountries.remove(country);
+        addOrRemoveItem(!country.isChecked(), country);
+
+    }
+
+    private void addOrRemoveItem(boolean addItem, Country country) {
+        if (addItem) {
+            cryptoCardAdapter.addItem(country);
+        } else {
+            cryptoCardAdapter.removeItem(country);
         }
-
-        cryptoCardAdapter.notifyItemChanged(c);
-        currencyItemAdapter.notifyDataSetChanged();
-
     }
 
 
@@ -219,8 +221,7 @@ public class CryptoConvertFragment extends Fragment
 //        }
 //    }
 
-    public interface StartFragmentListener{
+    public interface StartFragmentListener {
         void onStartFragment(Country country);
-        void onRefreshCountries();
     }
 }

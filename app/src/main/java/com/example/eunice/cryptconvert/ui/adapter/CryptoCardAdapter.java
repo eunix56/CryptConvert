@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.eunice.cryptconvert.R;
 import com.example.eunice.cryptconvert.data.db.Country;
+import com.example.eunice.cryptconvert.internal.utils.Constants;
 import com.example.eunice.cryptconvert.internal.utils.StringUtils;
 
 import java.util.List;
@@ -48,7 +49,30 @@ public class CryptoCardAdapter extends RecyclerView.Adapter<CryptoCardAdapter.Ca
 
     public void setData(List<Country> countries) {
         this.mCountryList = countries;
-        notifyDataSetChanged();
+        //notifyDataSetChanged();
+        notifyItemRangeInserted(Constants.ITEM_POSITION_START, countries.size());
+    }
+
+    public void addItem(Country country) {
+        if (country == null) return;
+
+        if (mCountryList.contains(country)) return;
+
+        mCountryList.add(country);
+        int position = mCountryList.indexOf(country);
+
+        notifyItemInserted(position);
+    }
+
+    public void removeItem(Country country) {
+        if (country == null) return;
+
+        if (!mCountryList.contains(country)) return;
+
+        int position = mCountryList.indexOf(country);
+
+        mCountryList.remove(country);
+        notifyItemRemoved(position);
     }
 
     static class CardViewHolder extends RecyclerView.ViewHolder{
